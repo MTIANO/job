@@ -12,6 +12,6 @@ class Controller extends BaseController
 
     public function test()
     {
-        var_dump(112222222221112222266);
+        dump(123,3453);
     }
 }
