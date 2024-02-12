@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    dump('会员的世界');
 });
 
 Route::get('/user', [\App\Http\Controllers\Controller::class, 'test']);
