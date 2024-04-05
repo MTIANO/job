@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WeiXinController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,7 @@ Route::get('/', function () {
     dump('会员的世界');
 });
 
+Log::channel('daily')->info(11111);
 Route::get('/user', [\App\Http\Controllers\Controller::class, 'test']);
 Route::match(['get', 'post'],'/', [WeiXinController::class,'index']);
 
