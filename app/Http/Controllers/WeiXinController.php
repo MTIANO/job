@@ -38,6 +38,7 @@ class WeiXinController extends BaseController
     }*/
 
     public function firstValid(Request $request){
+        Log::channel('daily')->info(123123);
         if($request->method() === 'GET'){
             return (new CommonService())->checkSignature($_GET);
         }
