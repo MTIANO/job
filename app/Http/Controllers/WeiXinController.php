@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MtUser;
 use App\Services\CommonService;
+use App\Services\WeiXinService;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -78,7 +79,7 @@ class WeiXinController extends BaseController
                     }
                 }
             case'text':
-                OpenApiPush::dispatch(['user_info' => $msg,'text' => $msg['Content']]);
+                //OpenApiPush::dispatch(['user_info' => $msg,'text' => $msg['Content']]);
                 //return $CommonService->doText($msg,'回答生成中，请稍等！');
                 $text = $CommonService->manage($msg,$user);
                 if($text === false){
