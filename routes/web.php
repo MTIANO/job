@@ -21,4 +21,4 @@ Route::get('/', function () {
 Route::get('/user', [\App\Http\Controllers\Controller::class, 'test']);
 Route::match(['get', 'post'],'/', [WeiXinController::class,'index']);
 
-Route::match(['get', 'post'],'first_valid', [WeiXinController::class,'firstValid']);
+Route::match(['get', 'post'],'/first_valid', [WeiXinController::class,'firstValid']);
