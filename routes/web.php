@@ -19,7 +19,6 @@ Route::get('/', function () {
     dump('会员的世界');
 });
 
-dump(1231231);die;
 Route::get('/user', [\App\Http\Controllers\Controller::class, 'test']);
 Route::match(['get', 'post'],'/', [WeiXinController::class,'index']);
 
