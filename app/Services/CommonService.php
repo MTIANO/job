@@ -264,6 +264,7 @@ class CommonService
             'key' => env('JH_LHL_KEY'),
             'date' => date('Y-m-d')
         ];
+        Log::channel('daily')->error($data);
         $http = new \GuzzleHttp\Client;
         $rel = $http->post($url,['form_params' => $data]);
         $rel = json_decode((string)$rel->getBody(), true);
