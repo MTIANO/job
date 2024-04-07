@@ -38,7 +38,6 @@ class WeiXinController extends BaseController
     }*/
 
     public function firstValid(Request $request){
-        Log::channel('daily')->info(123123);
         if($request->method() === 'GET'){
             return (new CommonService())->checkSignature($_GET);
         }
@@ -52,7 +51,7 @@ class WeiXinController extends BaseController
         if(!$msg){
             return false;
         }
-
+        Log::channel('daily')->info(json_encode($msg,JSON_UNESCAPED_UNICODE));
         $CommonService->addUser($msg);
         $user = (new MtUser())->getUserByWinXinId($msg['FromUserName']);
         if(!$user){
