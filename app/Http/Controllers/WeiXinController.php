@@ -50,12 +50,12 @@ class WeiXinController extends BaseController
     public function responseMsg(){
         $CommonService = new CommonService();
         $msg = $CommonService->getMsg();
-        /*$msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712460284","MsgType":"event","Event":"CLICK","EventKey":"YS","Encrypt":"ofvWP4O7U7oaPEC9GvxiO4dzJiqvJ1yg5COU03pklXPfLIF7lvMBBAC7OnbK4Te4ON+GJgEZAgqf0AGfz50SRhpwiFRlYJnycTNxWb8e7d7cagLzp6KLsZmYuJmG8fWdH4712SRz6y5gF5hjeIUyUh2hUW2cC5v9TYiZD9O120H9h5YdEqBhvnab4z8HR1EzN442e2HEVJtgrwbTqy++0HtagnHtpJiVxRQpJk\/Q6ZIKuANdy4hG2zUR4ML2+9isY+cCptwaDHSF44D4gzIR1UOASJ+yf2yJi59fyFMaQzfdY\/hZYdHsYvZSP5TIKcvTjN5yc\/pg3LNO0NKqmRvaOZuFwrBalLxAvQYRNgNwr\/SbRIXmlHDcxleFm0BqG0vDOS+nOiNncmJCVh5pQSTo6Yj\/w1w4gaLsypiaBL68gTc="}',true);*/
+        /*$msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712470360","MsgType":"text","Content":"老黄历","MsgId":"24516680597512481","Encrypt":"dHsCKRH31ndPtqTnK0LgwkxJDei10Zv0hp9FjeYfhhaRronkRUj24O8FdAOY\/KiAKxV3rxzXSrizOrb2DQZ1gObj1TGd0v49o3Ya3XYWDraCXliY+9G3iFvWElWsDNddRzc+ije9p1D9ORE4UbKePW4gt41HNR0X19movQK1HvtDy69MQyNzIR06LaXfwuVk37MyhfSzyL3ni5minkZKFT5IvWDLV3nw53FbdkMpQG7+xOVuCt1cAjDeyahahLq9uxKmPcwwRgnBWGVcxl2VCvGniUTpHj2HjYY3+\/dDidTzczpMPzcdfXo8ZQ5b1SKMMuplQLYxp8OwaUvcIuKHKgOpdCSCqN5dQHVXLedU4CrxrMbbOJm9N7Ng2O0gM1Wr+J54S\/XJ0q5OsUpXIGCFnBSymMGuPULC76Nol25879o="}',true);*/
 
         if(!$msg){
             return false;
         }
-        Log::channel('daily')->info(json_encode($msg,JSON_UNESCAPED_UNICODE));
+        Log::channel('daily')->info($msg);
         try {
             $CommonService->addUser($msg);
             $user = (new MtUser())->getUserByWinXinId($msg['FromUserName']);
@@ -64,7 +64,7 @@ class WeiXinController extends BaseController
             }
 
 
-            Log::channel('daily')->info($msg);
+
             switch ($msg['MsgType']){
                 case'event':
                     if($msg['Event'] === 'subscribe' ){

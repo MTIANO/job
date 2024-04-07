@@ -268,6 +268,7 @@ class CommonService
         $rel = $http->post($url,['form_params' => $data]);
         $rel = json_decode((string)$rel->getBody(), true);
         if($rel['error_code'] != 0){
+            Log::channel('daily')->error($rel);
             return '操作失败';
         }else{
             $text = [];
