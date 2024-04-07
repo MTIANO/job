@@ -49,8 +49,8 @@ class WeiXinController extends BaseController
 
     public function responseMsg(){
         $CommonService = new CommonService();
-        //$msg = $CommonService->getMsg();
-        $msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712460284","MsgType":"event","Event":"CLICK","EventKey":"YS","Encrypt":"ofvWP4O7U7oaPEC9GvxiO4dzJiqvJ1yg5COU03pklXPfLIF7lvMBBAC7OnbK4Te4ON+GJgEZAgqf0AGfz50SRhpwiFRlYJnycTNxWb8e7d7cagLzp6KLsZmYuJmG8fWdH4712SRz6y5gF5hjeIUyUh2hUW2cC5v9TYiZD9O120H9h5YdEqBhvnab4z8HR1EzN442e2HEVJtgrwbTqy++0HtagnHtpJiVxRQpJk\/Q6ZIKuANdy4hG2zUR4ML2+9isY+cCptwaDHSF44D4gzIR1UOASJ+yf2yJi59fyFMaQzfdY\/hZYdHsYvZSP5TIKcvTjN5yc\/pg3LNO0NKqmRvaOZuFwrBalLxAvQYRNgNwr\/SbRIXmlHDcxleFm0BqG0vDOS+nOiNncmJCVh5pQSTo6Yj\/w1w4gaLsypiaBL68gTc="}',true);
+        $msg = $CommonService->getMsg();
+        /*$msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712460284","MsgType":"event","Event":"CLICK","EventKey":"YS","Encrypt":"ofvWP4O7U7oaPEC9GvxiO4dzJiqvJ1yg5COU03pklXPfLIF7lvMBBAC7OnbK4Te4ON+GJgEZAgqf0AGfz50SRhpwiFRlYJnycTNxWb8e7d7cagLzp6KLsZmYuJmG8fWdH4712SRz6y5gF5hjeIUyUh2hUW2cC5v9TYiZD9O120H9h5YdEqBhvnab4z8HR1EzN442e2HEVJtgrwbTqy++0HtagnHtpJiVxRQpJk\/Q6ZIKuANdy4hG2zUR4ML2+9isY+cCptwaDHSF44D4gzIR1UOASJ+yf2yJi59fyFMaQzfdY\/hZYdHsYvZSP5TIKcvTjN5yc\/pg3LNO0NKqmRvaOZuFwrBalLxAvQYRNgNwr\/SbRIXmlHDcxleFm0BqG0vDOS+nOiNncmJCVh5pQSTo6Yj\/w1w4gaLsypiaBL68gTc="}',true);*/
 
         if(!$msg){
             return false;
