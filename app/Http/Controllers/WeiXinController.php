@@ -101,7 +101,7 @@ class WeiXinController extends BaseController
                     return $CommonService->doText($msg,$text);
                     break;
                 case'image':
-                    return '上传成功';
+                    return $CommonService->doText($msg,'上传成功');
                     break;
             }
         }catch (Exception $e) {
