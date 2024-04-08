@@ -261,9 +261,28 @@ class CommonService
     public function save_img($msg)
     {
         $path = '/www/img';
+
+        $headers = get_headers($msg['PicUrl'], 1);
+        $contentType = $headers['Content-Type'];
+        $fileExtension = '';
+        switch ($contentType) {
+            case 'image/jpeg':
+                $fileExtension = '.jpg';
+                break;
+            case 'image/png':
+                $fileExtension = '.png';
+                break;
+            case 'image/gif':
+                $fileExtension = '.gif';
+                break;
+            // 可以根据需要添加其他文件类型的判断
+            default:
+                $fileExtension = '.dat'; // 默认为 .dat 后缀
+                break;
+        }
         $img = file_get_contents($msg['PicUrl']);
         $md5 = md5($img);
-        $name = $md5 . '.jpg';
+        $name = $md5 . '.'.$fileExtension;
         file_put_contents($path . '/' . $name, $img);
         return true;
     }
