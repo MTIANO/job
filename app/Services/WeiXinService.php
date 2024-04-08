@@ -206,6 +206,7 @@ class WeiXinService
         }
         $access_token = $access_token['access_token'];
         $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$access_token.'&media_id='.$media_id;
+        dump($url);
         $http = new \GuzzleHttp\Client;
         $rel = $http->get($url);
         $rel = json_decode((string)$rel->getBody(), true);
