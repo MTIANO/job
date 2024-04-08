@@ -262,7 +262,10 @@ class CommonService
     {
         $path = '/www/img';
         $img = file_get_contents($msg['PicUrl']);
-        $name = date('YmdHis') . mt_rand(1000, 9999) . '.jpg';
+        $md5 = md5($img);
+        $name = $md5 . '.jpg';
+        file_put_contents($path . '/' . $name, $img);
+        return true;
     }
 
     public function lhl($user){

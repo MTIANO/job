@@ -49,8 +49,8 @@ class WeiXinController extends BaseController
 
     public function responseMsg(){
         $CommonService = new CommonService();
-        $msg = $CommonService->getMsg();
-        /*$msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712470360","MsgType":"text","Content":"老黄历","MsgId":"24516680597512481","Encrypt":"dHsCKRH31ndPtqTnK0LgwkxJDei10Zv0hp9FjeYfhhaRronkRUj24O8FdAOY\/KiAKxV3rxzXSrizOrb2DQZ1gObj1TGd0v49o3Ya3XYWDraCXliY+9G3iFvWElWsDNddRzc+ije9p1D9ORE4UbKePW4gt41HNR0X19movQK1HvtDy69MQyNzIR06LaXfwuVk37MyhfSzyL3ni5minkZKFT5IvWDLV3nw53FbdkMpQG7+xOVuCt1cAjDeyahahLq9uxKmPcwwRgnBWGVcxl2VCvGniUTpHj2HjYY3+\/dDidTzczpMPzcdfXo8ZQ5b1SKMMuplQLYxp8OwaUvcIuKHKgOpdCSCqN5dQHVXLedU4CrxrMbbOJm9N7Ng2O0gM1Wr+J54S\/XJ0q5OsUpXIGCFnBSymMGuPULC76Nol25879o="}',true);*/
+        //$msg = $CommonService->getMsg();
+        $msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712555941","MsgType":"image","PicUrl":"http:\/\/mmbiz.qpic.cn\/sz_mmbiz_jpg\/WeBRibejeeuPypGO2jS8jsysb4Dn084hlYicnKxK3cCw3XWI7X5YTiaibEMLssnmBM18Dlj59GtYokTn8awOJ8vAeA\/0","MsgId":"24517906352054932","MediaId":"ZKRPipIEk_tpiWmeYvtD4kB9UV-CwsVEN-0eB11B4soY8DWvOAh4AILvjTNt4zzl","Encrypt":"zg0NWaxg59qmnc976ZOeVa7wULeN2CblSqWWXS\/XU+rX2KHziaDod\/w3cLGySxB10c4vPUeTlB2GyAFJxA53BE8bSFiEbZn7RA3BbqH4mCugTLCteIxitU86gX0ZIK9hUmmMm1LoTrEEYvSzDxc37hcbDCfXrOUZVYdykmx\/sEYqintDMM7u9U\/dFnntWBNmwzsmO+DZf7Ghu70XYKC670ay8R\/sK2UvddnSpRVUfAJH\/dbpSqO5Rmr9dadKh+4mJ4Rpoyn+I3TvvVqv56T9RFsAe9H0Wu4RZetiQOflL6gFnj2rgWTdnqbn+73mGSw6k+Xj15SEV0MuEhZ9j2WEXkFSe3ILfDXG\/b22hJnMC34pihm25bepmGtYBLMnCvaM0Ypp+kKDzFNKoqznTXXQ5hS73DvW4uYtdMTEy3YkXEt1dkUdxjDm+5tsFeHCP\/q\/djgzBQeQu08uP6dR2OjnVeCegVjM6pbNriQFU8GOkU+ZH4NHcHOcpqRIw\/lHU8yuoPfE\/yuvHZSQwILUlFF7XSY\/1VmHqL+JvFKNCnrz0KamWUJn5JtJYf0d6DZxRjUrEXDFsBT64sKuvWFOvcUCVsejawYRxIXoorT0Wtawmo46iCF40diauHPdy1EFStQKZa+epokCNekLRZVziovQq26MgN2fSK5TH59jJKA+EKzB8h7elsN7ZEuR6MmfGP9dCM\/khp0cZePkoGB4ePn6dA=="}',true);
 
         if(!$msg){
             return false;
