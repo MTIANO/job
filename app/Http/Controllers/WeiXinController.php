@@ -55,7 +55,7 @@ class WeiXinController extends BaseController
         if(!$msg){
             return false;
         }
-        Log::channel('daily')->info($msg);
+        Log::channel('daily')->info(json_encode($msg,JSON_UNESCAPED_UNICODE));
         try {
             $CommonService->addUser($msg);
             $user = (new MtUser())->getUserByWinXinId($msg['FromUserName']);
@@ -101,6 +101,7 @@ class WeiXinController extends BaseController
                     return $CommonService->doText($msg,$text);
                     break;
                 case'image':
+                    $text = $CommonService->save_img($msg);
                     return $CommonService->doText($msg,'上传成功');
                     break;
             }

@@ -258,6 +258,13 @@ class CommonService
         }
     }
 
+    public function save_img($msg)
+    {
+        $path = '/www/img';
+        $img = file_get_contents($msg['PicUrl']);
+        $name = date('YmdHis') . mt_rand(1000, 9999) . '.jpg';
+    }
+
     public function lhl($user){
         $url = "http://v.juhe.cn/laohuangli/d";
         $data = [
