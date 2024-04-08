@@ -83,6 +83,7 @@ class WeiXinController extends BaseController
                             //return $CommonService->doText($msg,(new YsService($user))->get_user());
                         }
                     }
+                    break;
                 case'text':
                     //OpenApiPush::dispatch(['user_info' => $msg,'text' => $msg['Content']]);
                     //return $CommonService->doText($msg,'回答生成中，请稍等！');
@@ -98,6 +99,10 @@ class WeiXinController extends BaseController
                     }
 
                     return $CommonService->doText($msg,$text);
+                    break;
+                case'image':
+                    return '上传成功';
+                    break;
             }
         }catch (Exception $e) {
             Log::channel('daily')->error(json_encode($msg,JSON_UNESCAPED_UNICODE).'==='.$e->getMessage());
