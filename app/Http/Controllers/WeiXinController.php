@@ -49,8 +49,8 @@ class WeiXinController extends BaseController
 
     public function responseMsg(){
         $CommonService = new CommonService();
-        $msg = $CommonService->getMsg();
-        /*$msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712555941","MsgType":"image","PicUrl":"http:\/\/mmbiz.qpic.cn\/sz_mmbiz_jpg\/WeBRibejeeuPypGO2jS8jsysb4Dn084hlYicnKxK3cCw3XWI7X5YTiaibEMLssnmBM18Dlj59GtYokTn8awOJ8vAeA\/0","MsgId":"24517906352054932","MediaId":"ZKRPipIEk_tpiWmeYvtD4kB9UV-CwsVEN-0eB11B4soY8DWvOAh4AILvjTNt4zzl","Encrypt":"zg0NWaxg59qmnc976ZOeVa7wULeN2CblSqWWXS\/XU+rX2KHziaDod\/w3cLGySxB10c4vPUeTlB2GyAFJxA53BE8bSFiEbZn7RA3BbqH4mCugTLCteIxitU86gX0ZIK9hUmmMm1LoTrEEYvSzDxc37hcbDCfXrOUZVYdykmx\/sEYqintDMM7u9U\/dFnntWBNmwzsmO+DZf7Ghu70XYKC670ay8R\/sK2UvddnSpRVUfAJH\/dbpSqO5Rmr9dadKh+4mJ4Rpoyn+I3TvvVqv56T9RFsAe9H0Wu4RZetiQOflL6gFnj2rgWTdnqbn+73mGSw6k+Xj15SEV0MuEhZ9j2WEXkFSe3ILfDXG\/b22hJnMC34pihm25bepmGtYBLMnCvaM0Ypp+kKDzFNKoqznTXXQ5hS73DvW4uYtdMTEy3YkXEt1dkUdxjDm+5tsFeHCP\/q\/djgzBQeQu08uP6dR2OjnVeCegVjM6pbNriQFU8GOkU+ZH4NHcHOcpqRIw\/lHU8yuoPfE\/yuvHZSQwILUlFF7XSY\/1VmHqL+JvFKNCnrz0KamWUJn5JtJYf0d6DZxRjUrEXDFsBT64sKuvWFOvcUCVsejawYRxIXoorT0Wtawmo46iCF40diauHPdy1EFStQKZa+epokCNekLRZVziovQq26MgN2fSK5TH59jJKA+EKzB8h7elsN7ZEuR6MmfGP9dCM\/khp0cZePkoGB4ePn6dA=="}',true);*/
+        //$msg = $CommonService->getMsg();
+        $msg = json_decode('{"ToUserName":"gh_03aa44ccfbb4","FromUserName":"oERWv6qbxUaXC6Thly0ggeAkVilM","CreateTime":"1712571528","MsgType":"video","MediaId":"_w6KyBYugt6uOItB6sJmrqwXSSw30C4WP-Kplnuphr8AaESXLT4VbP5an9CA4ur10RDGzT3B5NCnL21uPhe-gg","ThumbMediaId":"_w6KyBYugt6uOItB6sJmriB476gBWZl8F1AVB34osXR6KGimlu49LOnfKYbYD7Rm","MsgId":"24518125813309221","Encrypt":"TXgGzSTHtQhvoxtzrjeWVvs\/oE8RI8ooLa4owM0iBF16icWPjuwDpwoNsvgq2g8gJRLDxWGHqMTETC6AABjtGvcXZPWWHGf3JZAcjGe41IqnwPM1uKwjutPRkiKa6+KydiF80zwcF\/hxSPWthqm2xeF\/2RS3scslq3KtBls3RxIdmmAqa\/Zr6LDl\/gl\/8b8tWLW7eh5fN4nh1nxM\/DUbI9STMWEWt4+KLbnRjCLQjp1vpAN+uMoCcRYtXiWz+rFpY\/70vldyo5wtE\/BOh3ee2X9D04pP8Pa4iUGTcw4KPhzwjMzwEGw+ucRAGlZaFVVLHQZY+jRTRggTfB9i8vwvdI7YI3cMAuF0\/j6p\/R9HxSsFDx8rYQY2jOfJMxaT3VPBZzTvDIKZpSSNvC\/et2kvLHkyxUq4mDlUh7CUyj96sZtjB4vvHqpFIKAKVF94G9RKPmE5yQO+EuWArjs299L49X02Cwekzt535rstp5TSik\/A1vHaFzh153GXe8iSX25C8VULmgGHX9naGM66oRbqaYuDBVaRjOehEVOSPAb5m56LKIqN0+Hx6FtgK7n0JW9ZDiodeCqDsIHuIZdR8zGG5ifhb8H8YJLsbL6OqD\/eCaxUGXVC2LZDXY\/DuqGka2942rfgUk3ndcYWwJgMVHAHthclRdDW9b\/1LQE82jeaWvQ="}',true);
 
         if(!$msg){
             return false;
@@ -104,10 +104,14 @@ class WeiXinController extends BaseController
                     $text = $CommonService->save_img($msg);
                     return $CommonService->doText($msg,'上传成功');
                     break;
+                case'video':
+                    $text = $CommonService->save_video($msg);
+                    return $CommonService->doText($msg,'上传成功');
+                    break;
             }
         }catch (Exception $e) {
             Log::channel('daily')->error(json_encode($msg,JSON_UNESCAPED_UNICODE).'==='.$e->getMessage());
-            return $CommonService->doText($msg,'网络错误，请稍后重试!');
+            return $CommonService->doText($msg,'网络错误，请稍后重试!--'.$e->getMessage());
         }
 
     }

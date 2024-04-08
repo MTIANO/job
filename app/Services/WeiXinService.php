@@ -199,4 +199,17 @@ class WeiXinService
         return $rel;
     }
 
+    public function get_media($media_id){
+        $access_token = $this->getToken();
+        if(!is_array($access_token)){
+            return $access_token;
+        }
+        $access_token = $access_token['access_token'];
+        $url = 'https://api.weixin.qq.com/cgi-bin/media/get?access_token='.$access_token.'&media_id'.$media_id;
+        $http = new \GuzzleHttp\Client;
+        $rel = $http->get($url);
+        $rel = json_decode((string)$rel->getBody(), true);
+        return $rel;
+    }
+
 }

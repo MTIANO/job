@@ -261,7 +261,6 @@ class CommonService
     public function save_img($msg)
     {
         $path = '/www/img';
-
         $headers = get_headers($msg['PicUrl'], 1);
         $contentType = $headers['Content-Type'];
         $fileExtension = '';
@@ -285,6 +284,13 @@ class CommonService
         $name = $md5 . '.'.$fileExtension;
         file_put_contents($path . '/' . $name, $img);
         return true;
+    }
+
+    public function save_video($msg)
+    {
+        $video = (new WeiXinService())->get_media($msg['MediaId']);
+        Log::channel('daily')->info($video);
+        dump($video);die;
     }
 
     public function lhl($user){
