@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MtUser;
 use App\Services\CommonService;
+use App\Services\DevWeiXinService;
 use App\Services\WeiXinService;
 use Exception;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Log;
+use function Symfony\Component\Translation\t;
 
 class WeiXinController extends BaseController
 {
@@ -26,17 +28,16 @@ class WeiXinController extends BaseController
         return view('welcome',$data);
     }
 
-    /*public function test(){
+    public function timing(Request $request){
         try {
-        $open = (new OpenApiService())->completions('php 数组排序并分页');
-            dump($open['choices'][0]['message']['content']);
-            dump($open);
-            die;
+            $text = $request->get('text','test');
+            (new DevWeiXinService())->send('对弈竞猜提醒',$text,date('Y-m-d H:i:s'));
+            return true;
         }catch (Exception $e) {
             dump(123);
             dump($e->getMessage());die;
         }
-    }*/
+    }
 
     public function firstValid(Request $request){
         if($request->method() === 'GET'){

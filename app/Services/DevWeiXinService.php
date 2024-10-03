@@ -6,11 +6,11 @@ namespace App\Services;
 use Illuminate\Support\Facades\Http;
 use Ramsey\Uuid\Uuid;
 
-class WeiXinService
+class DevWeiXinService
 {
 
     public function getToken(){
-        $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('WEIXIN_APPID').'&secret='.env('WEIXIN_APPSECRET');
+        $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.env('DEV_WEIXIN_APPID').'&secret='.env('DEV_WEIXIN_APPSECRET');
         $http = new \GuzzleHttp\Client;
         $rel = $http->get($url);
         $rel = json_decode((string)$rel->getBody(), true);
@@ -20,7 +20,7 @@ class WeiXinService
         return $rel;
     }
 
-    public function send($first,$keyword1,$keyword2,$sand_url = '',$remark = '点击查看内容',$touser='oERWv6qbxUaXC6Thly0ggeAkVilM'){
+    public function send($first,$keyword1,$keyword2,$sand_url = '#',$remark = '点击查看内容',$touser='ornea5s_w298U_nPgHF1pjkpkqWY'){
         $access_token = $this->getToken();
         if(!is_array($access_token)){
             return $access_token;
@@ -31,7 +31,7 @@ class WeiXinService
 
         $msg = [
             'touser' => $touser,
-            'template_id' => 'eUDAM5lz9Sz_zzWzu9UnrHNS6NpIhsbktnl_E7kLJTI',
+            'template_id' => 'CCOwy2oq5DfU7qfMG1hH-6AI2fTsApx__Y4kAmEzvaQ',
             'url' => $sand_url,
             'topcolor' => '#FF0000',
             'data' => [
@@ -149,7 +149,6 @@ class WeiXinService
         $http = new \GuzzleHttp\Client;
         $rel = $http->post($url,$data);
         $rel = json_decode((string)$rel->getBody(), true);
-        dump($rel);die;
         if($rel['errcode'] === 0){
             return true;
         }
